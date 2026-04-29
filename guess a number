@@ -1,0 +1,53 @@
+import random
+
+# Fix: Added quotes around input prompts
+n1 = input("enter player1: ")
+n2 = input("enter player2: ")
+
+s1 = 10
+s2 = 10 # Suggest starting at same score, or keep 12
+d1 = random.randint(1, 10)
+d2 = random.randint(1, 10)
+
+print("\n---", n1, "turn ---")
+while True:
+    try:
+        g1 = int(input("enter ur guess (1-10): "))
+        s1 = s1 - 1
+        if g1 == d1:
+            print("Correct!")
+            break
+        elif g1 < d1:
+            print("Too low!")
+        else:
+            print("Too high!")
+    except ValueError:
+        print("Invalid input, please enter a number.")
+
+print("\n---", n2, "turn ---")
+while True:
+    try:
+        g2 = int(input("enter ur guess (1-10): "))
+        s2 = s2 - 1
+        if g2 == d2:
+            print("Correct!")
+            break
+        elif g2 < d2:
+            print("Too low!")
+        else:
+            print("Too high!")
+    except ValueError:
+        print("Invalid input, please enter a number.")
+
+print("\n--- Summary ---")
+# Fix: Changed .formate to .format or f-strings
+print("{}: {} attempts left".format(n1, s1))
+print("{}: {} attempts left".format(n2, s2))
+
+# Fix: Changed p1/p2 to n1/n2
+if s1 > s2:
+    print("Winner is:", n1)
+elif s2 > s1:
+    print("Winner is:", n2)
+else:
+    print("It's a draw!")
